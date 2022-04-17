@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inscription</title>
+    <link rel="stylesheet" href="./inscription.css">
+</head>
+<body>
+    <header>
+        <div class="nav-r"> <img src="1/R.png" alt="">
+            <div>ZOZO</div>
+        </div>
+    
+        <div class="a1a"> 
+            <ul class="nav-bar-left">
+                <li><a href="index.html">home</a></li>
+                <li><a href="shop.html">shopp</a></li>
+                <li><a href="inscription.html">join us</a></li>
+                <li><a href="Administrateur.php">about</a></li>
+                <li><a href="contact.html">contact us </a></li>
+                <li>
+                    <a href="panier.html"><img src="shopping-bag.png" alt=""> </a>
+                </li>
+            </ul>
+        </div>
+ <div class="a2">
+    <div class="toggle_btn" >
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+ </div>
+    </header>
+<section class="first">
+  <div class="first1">
+   <div class="text-first"> <h1 class="fisrt_1text">lets join to fozo_shopping </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, quas vel obcaecati eaque veniam voluptate dolorum iusto consequuntur iste, aperiam dicta, dolore cum praesentium delectus repellat voluptas velit officia blanditiis!</p></div>
+    <a href="#inscription"><img src="down _flesh.png" alt=""> </a>
+  </div>
+    <div class="img1_main">
+        <img src="img/logo.png" alt="">
+    </div>
+
+</section>
+
+
+<section class="inscription" id="inscription">
+    <h1>Fill out the form to join us</h1>
+    <form class="formulair" action="inscription.php" method="post">
+        <div class="IN1">        <span> first_name </span> <input type="text" placeholder="ur first name?" required id="input1" name="first_name"> <span id="V1"></span></div>
+        <div class="IN2">        <span> last_name </span> <input type="text" placeholder="ur last name?" required id="input2" name="last_name"> <span id="V2"></span> </div>
+        <div class="IN3">        <span> mail</span><input  type="email" placeholder="ur mail" required id="input3" name="mail"> <span id="V10"></span> </div>
+        <div class="IN4">        <span>age</span><input  type="number"  required id="input4" name="age" value="18"> <span id="V3"></span> </div>
+        <div class="IN5">  <p>What is your favorite style?</p>
+
+            <input type="checkbox" name="fashion_style[]" value="Sporty" id="input5"> <span>Sporty</span>
+            <input type="checkbox" name="fashion_style[]"  value="Classic" id="input5"> <span>Classic</span>
+            <input type="checkbox" name="fashion_style[]" value="Casual" id="input5"> <span>Casual</span>
+            <input type="checkbox" name="fashion_style[]" value="Streetwear" id="input5"> <span>Streetwear</span></div>
+
+        <div class="IN6">        <input type="textarea" placeholder="write something about u life_style" id="input6" maxlength="200" name="text" > <span class="maxl"></span></div>
+        <div class="IN7">        <span>password</span><input type="password" name="passw" id="input7" required>
+            <span> validation password</span><input type="password" name="passw1" id="input8" required>  <span id="V4"></span> </div>
+
+        
+        <button id="validation" class="validation" >validation</button>
+
+        <div style="padding-bottom: 15px;"><a  href="register.php"> u  already  have a account? <strong>click_me</strong></a></div>
+
+
+
+
+    
+    </form>
+        
+    </section>
+
+
+</body>
+</html>
+
+
+
+<script>
+
+
+
+
+
+let first_name = document.getElementById('input1');
+let last_name = document.getElementById('input2');
+let mail = document.getElementById('input3');
+let age = document.getElementById('input4');
+// let style_of_cloths = document.querySelectorAll('#input5');
+let erea = document.getElementById('input6');
+// let max_lenght = document.getElementsByClassName('maxl');
+let passwr1 = document.getElementById('input7');
+let passwr2 = document.getElementById('input8');
+let btn_validation = document.getElementById('validation');
+// let subm = document.getElementById('input9');
+
+let toggle_btn=document.querySelector('.toggle_btn');
+let a1a=document.querySelector('.a1a');
+
+let formulair=document.querySelector('.formulair');
+
+// subm.style.display = "none";
+
+let submit_valide;
+
+btn_validation.addEventListener("click",function(e){
+    e.preventDefault();
+    if( first_name.value.length<2 ){
+        
+        document.getElementById('V1').innerHTML="may the name so small Or the first littre diffrent uppercase ";
+        document.getElementById("V1").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
+        submit_valide="false";
+    }
+    else{
+         submit_valide="true";
+    }
+   
+
+    if( last_name.value.length<2 ){
+        
+        document.getElementById('V2').innerHTML="may the name so small Or the first littre diffrent uppercase ";
+        document.getElementById("V2").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
+        submit_valide="false";
+    }
+    else{
+         submit_valide="true";
+    }
+
+    //check mail
+
+    let mail1 = mail.value.indexOf("@") 
+
+if(mail.value.slice(mail1)!=="@uhp.ac.ma"){
+
+document.getElementById("V10").innerHTML="may this mail not a prof mail";
+document.getElementById("V10").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
+submit_valide="false";
+}
+else{
+     submit_valide="true";
+}
+
+
+if(age.value<18 || age.value>70){
+document.getElementById("V3").innerHTML="u are xaref(older) or so adult";
+document.getElementById("V3").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
+submit_valide="false";
+
+}
+else{
+     submit_valide="true";
+}
+
+
+if(passwr1.value!==passwr2.value || passwr1.value.length<8){
+  document.getElementById("V4").innerHTML="The first password is different from the second";
+  document.getElementById("V4").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
+  submit_valide="false";
+}
+else{
+     submit_valide="true";
+}
+
+
+
+
+},false);
+
+toggle_btn.onclick=function(){
+a1a.classList.add("show");
+
+}
+
+
+let subm=document.createElement('button');
+
+let atr= document.createAttribute('name');
+
+submit_valide="true";
+if(submit_valide==="true"){
+atr.value='submit';
+subm.setAttributeNode(atr);
+
+subm.innerHTML="log_in";
+formulair.appendChild(subm);
+    
+}
+
+
+
+
+
+
+
+
+</script>
+
