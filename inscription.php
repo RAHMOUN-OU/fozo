@@ -14,7 +14,7 @@ $password = "";
 $dbname = "fozo_shopping";
 $conn = mysqli_connect($_SERVER , $usernam , $password ,$dbname); 
 
-if(isset($_POST["submit"])){
+if(isset($_POST['submit'])){
     if(!empty($_POST["first_name"]) && !empty($_POST["last_name"]) && !empty($_POST["mail"] ) && !empty($_POST["age"]) && !empty($_POST["fashion_style"]) && !empty($_POST["text"]) && !empty($_POST["passw"]) && !empty($_POST["passw1"])){
         $allele = implode("-",$_POST["fashion_style"]);
         $first = $_POST["first_name"];
@@ -34,12 +34,8 @@ if(isset($_POST["submit"])){
             $query = "insert into fozo_form (first_name,last_name,mail,age,favorite_style,pass1,pass2,some_oubout_client) values 
             ( '$first','$last','$mail','$age', '$allele','$pass','$pass1','$text')";
             mysqli_query($conn,$query ) or die('query failed');
-             header('location:shop.html');
+             header('location:shop.php');
          }
-
-        
-
-
 
     }
 }

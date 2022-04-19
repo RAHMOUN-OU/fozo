@@ -1,3 +1,33 @@
+
+<?php 
+// connection to my database fozo_shoppin  products table
+
+$_SERVER='localhost';
+$user_admin='root';
+$pass_admin='';
+$data_base='fozo_shopping';
+
+$connection = mysqli_connect($_SERVER,$user_admin,$pass_admin,$data_base);
+
+if($connection){
+    echo "connection goooooood ";
+}
+else{
+
+    echo "opeartion conn isnt succussful";
+}
+
+  
+$sel = "select* from product";
+
+$qr = $connection->query($sel);
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,10 +48,10 @@
 
         <div>
             <ul class="nav-bar-left">
-                <li><a class="active" href="index.html">home</a></li>
-                <li><a href="shop.html">shopp</a></li>
+                <li><a class="active" href="index.php">home</a></li>
+                <li><a href="shop.php">shop</a></li>
                 <li><a href="inscription.html">join us</a></li>
-                <li><a href="about.html">about</a></li>
+                <li><a href="Sign-In.php">admin</a></li>
                 <li><a href="contact.html">contact us </a></li>
                 <li>
                     <a href="panier.html"><img src="/shopping-bag.png" alt=""> </a>
@@ -75,125 +105,64 @@
         <section class="pro-1">
 
 <div id="F_robess" class="globel_scroll">
-    <h1 id="robes" >femme robes</h1>
-
-
+    <h1 id="robes" >F_robes</h1>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
+
+
 <div class="continer">
 
-    <div class="product">
-        <img class="img-pro" src="/img/products/f8.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
 
-</div>
+
+    <?php 
+    while($row = $qr->FETCH_ASSOC() )
+    {
+        if($row['category']=='F_robess')
+        {
         
 
+    ?>
+
+    <div class="product">
+        <img class="img-pro" src="<?php  echo $row['image'] ?>" alt="">
+        <div class="desc">
+            <span>nick</span>
+            <h5> <?php echo $row['title'] ?> </h5>
+            <div class="start">
+                <img src="/star.png" alt="">
+                <img src="/star.png" alt="">
+                <img src="/star.png" alt="">
+                <img src="/star.png" alt="">
+            </div>
+            <h4> <?php  echo $row['price']  ?></h4>
+            <a href="panier.html"> <img style="width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 5%;
+            left: 85%;
+            " src="/shop_icons.png" alt=""></a>
+            </div>
+    </div>
+
+<?php }   ?>
 
 
-    
-
-
-
-
+</div>
 
 
     </div>
 
-
-
-
-
 </div>
+
+
+
+
            
 <div id="F_Pontalons" class="globel_scroll">
     <h1 id="robes">F_Pontalons</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool"> </span>
     <div class="scroll">
         
 
@@ -202,123 +171,49 @@
 
 
 
+
+    
+  
+
+    
+
+
+<?php if($row['category']=='F_Pontalons'){  ?>
+
+
+
+
     <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
+        <img class="img-pro" src="<?php echo $row['image'] ?>" alt="">
         <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
+            <span> <?php echo $row['title'] ?> </span>
+            <h5> <?php echo $row['category'] ?>  </h5>
             <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
             </div>
-            <h4>100 MAD</h4>
+            <h4> <?php echo $row['price'] ?> </h4>
             <a href="panier.html"> <img style="width: 20px;
             height: 20px;
             border-radius: 5px;
             position: absolute;
             bottom: 5%;
             left: 85%;
-            " src="/shop_icons.png" alt=""></a>
+            " src="shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
+
+<?php } ?>
 
     
-
-    
-
-    
-
-
-    
-
-
-
 </div>
-        
-
-
-
     
 
 
 
-
-
-
     </div>
-
-
-
-
 
 </div>
 
@@ -326,7 +221,7 @@
 
 <div id="F_Blazers" class="globel_scroll">
     <h1 id="robes">F_Coats</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
@@ -335,128 +230,43 @@
 
 
 
+<?php  if($row['category']=='F_Blazers'){ ?>
+
+    
     <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
+        <img class="img-pro" src=" <?php echo  $row['image'] ?>" alt="">
         <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
+            <span>  <?php echo  $row['title'] ?> </span>
+            <h5>  <?php echo  $row['category'] ?> </h5>
             <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
             </div>
-            <h4>100 MAD</h4>
+            <h4> <?php echo  $row['price'] ?> </h4>
             <a href="panier.html"> <img style="width: 20px;
             height: 20px;
             border-radius: 5px;
             position: absolute;
             bottom: 5%;
             left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
+            " src="shop_icons.png" alt=""></a>
             </div>
     </div>
 
-    
 
-    
-
-    
-
-
-    
-
-
+    <?php }} ?>
 
 </div>
         
-
-
-
-    
-
-
-
-
-
-
     </div>
-
-
-
-
 
 </div>
 
 <div id="F_T-Shirt" class="globel_scroll">
     <h1 id="robes">F_T-Shirt</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
@@ -553,37 +363,16 @@
             </div>
     </div>
     
-
-
-    
-
-
-    
-
-
-
 </div>
-        
-
-
-
     
-
-
-
-
-
 
     </div>
-
-
-
 
 
 </div>
 <div id="F_Hoodies" class="globel_scroll">
     <h1 id="robes">F_Hoodies</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
@@ -679,41 +468,16 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-    
-
-    
-
-    
-
-    
-
-
 
 </div>
         
-
-
-
-    
-
-
-
-
-
-
     </div>
-
-
-
-
 
 </div>
 
 <div id="H_T-Shirt" class="globel_scroll">
     <h1 id="robes">H_T-Shirt</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool"> </span>
     <div class="scroll">
         
 
@@ -809,46 +573,22 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-    
-
-    
-
-    
-
 
 
 </div>
-        
-
-
-
     
-
-
-
-
-
-
     </div>
-
-
-
-
 
 </div>
 
 <div id="H_Coats" class="globel_scroll">
     <h1 id="robes">H_Coats</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
 
 <div class="continer">
-
-
 
     <div class="product">
         <img class="img-pro" src="/img/products/f2.jpg" alt="">
@@ -937,47 +677,23 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-    
-
-
-    
-
-
-    
-
-
 
 </div>
-        
-
-
-
-    
-
-
-
-
 
 
     </div>
-
-
-
 
 
 </div>
 
 <div id="H_Pontalons" class="globel_scroll">
     <h1 id="robes">H_Pontalons</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
 
 <div class="continer">
-
 
 
     <div class="product">
@@ -1067,30 +783,12 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-    
-
-    
-
 
 
 </div>
-        
-
-
-
     
 
-
-
-
-
-
     </div>
-
-
-
 
 
 </div>
@@ -1098,14 +796,12 @@
 
 <div id="H_centures" class="globel_scroll">
     <h1 id="robes">H_centures</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
 
 <div class="continer">
-
-
 
     <div class="product">
         <img class="img-pro" src="/img/products/f2.jpg" alt="">
@@ -1194,48 +890,23 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-
-    
-
-    
-
-
-    
-
-
 
 </div>
         
 
-
-
-    
-
-
-
-
-
-
     </div>
-
-
-
 
 
 </div>
 
 <div id="H_Jeans" class="globel_scroll">
     <h1 id="robes">H_Jeans</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
 
 <div class="continer">
-
-
 
     <div class="product">
         <img class="img-pro" src="/img/products/f2.jpg" alt="">
@@ -1324,48 +995,23 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-    
-
-
-    
-
-
-    
-
 
 
 </div>
         
-
-
-
-    
-
-
-
-
-
-
     </div>
-
-
-
 
 
 </div>
 
 <div id="E_T-Shirt" class="globel_scroll">
     <h1 id="robes">E_T-Shirt</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool"> </span>
     <div class="scroll">
         
 
 
 <div class="continer">
-
-
 
     <div class="product">
         <img class="img-pro" src="/img/products/f2.jpg" alt="">
@@ -1454,34 +1100,13 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-    
-
-
-    
-
-
-    
 
 
 
 </div>
         
 
-
-
-    
-
-
-
-
-
-
     </div>
-
-
-
 
 
 </div>
@@ -1489,7 +1114,7 @@
 
 <div id="E_Coats" class="globel_scroll">
     <h1 id="robes">E_Coats</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <span class="flesh-scrool"> </span>
     <div class="scroll">
         
 
@@ -1585,31 +1210,10 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-
-    
-
-
-    
-
-
 
 </div>
         
-
-
-
-    
-
-
-
-
-
-
     </div>
-
-
 
 
 
@@ -1715,34 +1319,10 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-    
-
-    
-
-
-    
-
-
 
 </div>
-        
-
-
-
     
-
-
-
-
-
-
     </div>
-
-
-
-
 
 </div>
 
@@ -1750,12 +1330,8 @@
     <h1 id="robes">E_Centures</h1>
     <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
     <div class="scroll">
-        
-
 
 <div class="continer">
-
-
 
     <div class="product">
         <img class="img-pro" src="/img/products/f2.jpg" alt="">
@@ -1844,43 +1420,11 @@
             " src="/shop_icons.png" alt=""></a>
             </div>
     </div>
-    
-
-    
-
-    
-
-
-    
-
-
-
 </div>
-        
-
-
-
-    
-
-
-
-
-
 
     </div>
 
-
-
-
-
 </div>
-
-
-
-
-
-
-
 
         </section>
 
@@ -1960,3 +1504,421 @@ height: 13px;
 </body>
 
 </html>
+
+<style>
+                * {
+                padding: 0%;
+                margin: 0%;
+            }
+            
+            header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 80px;
+                background: #e3e6f3;
+                box-shadow: 0px 5px 20px black;
+                position: sticky;
+                z-index: 999;
+                top: 0%;
+                left: 0%;
+            }
+            
+            .nav-r {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .nav-r img {
+                height: 40px;
+                width: 40px;
+            }
+            
+            .nav-r div {
+                padding-left: 20px;
+                color: black;
+                font-size: 20px;
+                font-weight: 900;
+                font-family: 'Courier New', Courier, monospace;
+            }
+            
+            .nav-r:hover div {
+                text-shadow: 0px 5px 15px orange;
+                font-size: 22px;
+            }
+            
+            .nav-bar-left {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .nav-bar-left li {
+                list-style: none;
+                padding: 0px 20px;
+            }
+            
+            .nav-bar-left:last-child img {
+                height: 30px;
+                width: 30px;
+            }
+            
+            .nav-bar-left li a {
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: 600;
+                color: #1a1a1a;
+            }
+            
+            ul li::after {
+                content: "";
+                background: orange;
+                width: 0%;
+                height: 2px;
+                transition: 0.5s;
+                display: block;
+                margin: auto;
+            }
+            
+            ul li::before {
+                content: "";
+                background: orange;
+                width: 0%;
+                height: 2px;
+                transition: 0.5s;
+                display: block;
+                margin: auto;
+            }
+            
+            ul li:hover::after {
+                width: 100%;
+            }
+            
+            ul li:hover::before {
+                width: 100%;
+            }
+            
+            .logo_ {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                margin: 50px;
+            }
+            
+            .logo_ {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .logo_ .logo-back {
+                width: 17%;
+                height: 125vh;
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(34, 30, 30);
+                box-shadow: black 0PX 1PX 10px;
+            }
+            
+            .sous-catg {
+                padding: 20px 30px;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                position: relative;
+                margin-bottom: 200px;
+            }
+            
+            .sous-catg ul {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 104%;
+                left: 31%;
+                display: inline;
+            }
+            
+            .sous-catg ul li a {
+                color: aquamarine;
+                opacity: 0.7;
+            }
+            
+            .sous-catg a {
+                text-decoration: none;
+                font-weight: 900;
+                font-size: 19px;
+                font-family: 'Courier New', Courier, monospace;
+                color: #cce7d0;
+                padding-bottom: 10px;
+                text-shadow: #cce7d0 0px 3px 30px;
+            }
+            
+            .sous-catg a:hover {
+                text-shadow: #e3e6f3 0px 3px 10px;
+            }
+            .pro-1{
+                width: 80%;
+                padding-left: 10px;
+                margin: 30px;
+                padding-top: 17px;
+            }
+
+
+            .globel_scroll{
+                padding-bottom: 30px;
+            }
+            .scroll{
+                
+                display: block; 
+                overflow-x: scroll;
+                width: 100%;
+                box-sizing: border-box;
+                background-color: #058078ca;
+                border: 1px solid #1ad1c5;
+                box-shadow: 0px 1px 10px #6a8f8c ;
+                
+                
+                
+            }
+
+            #robes{
+                
+                
+                text-align: center;
+                padding-top: 10px;
+                font-family: 'Courier New', Courier, monospace;
+                font-weight:900 ;
+                text-shadow: 1px 0px 7px #a08989;
+                color: #043835;
+            }
+            .flesh-scrool{
+                padding-left: 37.2%;
+                font-size: 20px;
+                font-weight: 800;
+                color: #088178;
+            }
+            
+
+
+        
+            .scroll::-webkit-scrollbar{
+                display: none;
+            }
+            
+            .continer{
+                display: block;
+                white-space: nowrap;
+            }
+
+
+             .product {
+                width: 27%;
+                border: 1px solid #52545e;
+                border-radius: 20px;
+                box-shadow: 0px 0px 10px gray;
+                display: inline-block;
+                margin-right: 10px;
+                text-align: center;
+                background-color: #cce7d0;
+            }
+            
+             .product:hover {
+                box-shadow: 0px 10px 20px rgb(153, 114, 114);
+                opacity: 0.8;
+            }
+            
+            .img-pro {
+                width: 200px;
+                height: 200px;
+                border-radius: 50px;
+                margin: 5px;
+            }
+            
+            .start img {
+                width: 15px;
+                height: 15px;
+            }
+            
+            .product {
+                margin: 50px;
+            }
+            
+            .product .desc {
+                text-align: center;
+                padding: 10px 7px;
+            }
+            
+            .desc .span {
+                color: #060606;
+                font-size: 12px
+            }
+            
+            .desc h5 {
+                padding-top: 8px;
+                color: #1a1a1a;
+                font-size: 15px;
+            }
+            
+            .desc {
+                position: relative;
+            }
+
+
+            
+
+
+            
+            footer {
+                display: flex;
+                flex-direction: row;
+                margin-top: 20px;
+                background-color: #1a1a1a;
+                border: 1px solid #1a1a1a;
+                box-shadow: 0px 1px 10px black;
+                color: #cce7d0;
+            }
+            
+            .footer-l {
+                width: 40%;
+            }
+            
+            .col h4 {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 20px;
+                font-weight: 800;
+            }
+            
+            .follow h1 {
+                font-size: 16px;
+                padding-top: 10px;
+                text-align: center;
+                padding-bottom: 7px;
+            }
+            
+            .follow li {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+            
+            .follow {
+                width: 100px;
+                margin: 10px;
+            }
+            
+            ul {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+            
+            .footer-r {
+                margin-left: 20px;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+            }
+            
+            .footer-r .about {
+                margin: 30px;
+                padding-right: 30px;
+            }
+            
+            .footer-r .app {
+                padding: 30px;
+            }
+            
+            .app h1 {
+                padding-bottom: 10px;
+            }
+            .nest_pageof_products{
+                text-align: center;
+            }
+            .nest_pageof_products a{
+text-decoration: none;
+background-color: #088178;
+padding: 15px 20px;
+color: #e3e6f3;
+font-weight: 500;
+font-size: 16px;
+
+
+            }
+
+            .nest_pageof_products a:hover{
+                box-shadow: 0px 2px 16px black;
+            }
+            
+
+
+
+
+
+
+            @media(max-width:909px) {
+                .nav-bar-left {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .logo-back {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .logo-back button {
+                    width: fit-content;
+                }
+                .logo-back a {
+                    font-size: 15px;
+                }
+                .cont-prod {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .img-pro {
+                    width: 70%;
+                    height: 70%;
+                }
+                .footer-r {
+                    margin-left: 5px;
+                }
+                .footer-r .about {
+                    margin: 10px;
+                    padding-right: 10px;
+                }
+                .footer-r .app {
+                    padding: 10px;
+                }
+                .app h1 {
+                    padding-bottom: 10px;
+                }
+
+                .product .start img {
+
+                width: 10px;
+                height: 10px;
+                }
+
+                .globel_scroll .flesh-scrool{
+font-size: 10px;
+padding-left: 29%;
+
+                }
+                .logo-back li a {
+                    font-size: 10px;
+                }
+                .logo-back ul{
+                    list-style: none;
+                }
+                .sous-catg a{
+                    font-size: 10px;
+                }
+
+            }
+</style>
