@@ -17,10 +17,27 @@ else{
     echo "opeartion conn isnt succussful";
 }
 
-  
 $sel = "select* from product";
 
 $qr = $connection->query($sel);
+
+
+
+$qr1 = $connection->query($sel);
+$qr2 = $connection->query($sel);
+$qr3 = $connection->query($sel);
+$qr4 = $connection->query($sel);
+$qr5 = $connection->query($sel);
+$qr6 = $connection->query($sel);
+$qr7 = $connection->query($sel);
+$qr8 = $connection->query($sel);
+$qr9 = $connection->query($sel);
+$qr10 = $connection->query($sel);
+$qr11 = $connection->query($sel);
+$qr12 = $connection->query($sel);
+$qr13 = $connection->query($sel);
+$qr14 = $connection->query($sel);
+
 
 
 ?>
@@ -36,25 +53,27 @@ $qr = $connection->query($sel);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shop</title>
-    <link rel="stylesheet" href="/shop.css">
     
 </head>
 
 <body>
     <header>
-        <div class="nav-r"> <img src="/1/R.png" alt="">
-            <div>ZOZO</div>
+        <div class="nav-r"> <img src="ZAKA12.png" alt="">
+            <!-- <div>ZOZO</div> -->
         </div>
 
         <div>
             <ul class="nav-bar-left">
-                <li><a class="active" href="index.php">home</a></li>
-                <li><a href="shop.php">shop</a></li>
-                <li><a href="inscription.html">join us</a></li>
-                <li><a href="Sign-In.php">admin</a></li>
-                <li><a href="contact.html">contact us </a></li>
+                <li><ion-icon name="home"></ion-icon> <a class="active" href="index.php"> home  </a></li>
+                <li><ion-icon name="card"></ion-icon> <a href="shop.php">shop</a></li>
+                <li> <ion-icon name="contacts"></ion-icon> <a href="inscription.html">join us</a></li>
+                <li> <ion-icon name="person"></ion-icon> <a href="Sign-In.php">admin</a></li>
+                <li><ion-icon name="chatboxes"></ion-icon> <a href="contact.html">contact us </a></li>
                 <li>
-                    <a href="panier.html"><img src="/shopping-bag.png" alt=""> </a>
+                    <a href="panier.php">
+                        
+                        <ion-icon name="cart"></ion-icon>
+                 </a>
                 </li>
 
 
@@ -104,54 +123,47 @@ $qr = $connection->query($sel);
 
         <section class="pro-1">
 
+
+
+
 <div id="F_robess" class="globel_scroll">
-    <h1 id="robes" >F_robes</h1>
-    <span class="flesh-scrool">  </span>
+
+
+    <h1 id="robes" > robes </h1>
+    <span class="flesh-scrool" > </span>
     <div class="scroll">
-        
-
-
+ 
 <div class="continer">
+<?php  while($row = $qr->FETCH_ASSOC() ){  
 
-
-
-    <?php 
-    while($row = $qr->FETCH_ASSOC() )
-    {
-        if($row['category']=='F_robess')
-        {
-        
-
-    ?>
-
-    <div class="product">
+ if($row['category']=='F_robess'){
+      ?>
+      <form action='panier.php' method='POST'>
+      <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
+    <div  class="product">
         <img class="img-pro" src="<?php  echo $row['image'] ?>" alt="">
         <div class="desc">
             <span>nick</span>
-            <h5> <?php echo $row['title'] ?> </h5>
+            <h5  > <?php echo $row['title'] ?> </h5>
             <div class="start">
                 <img src="/star.png" alt="">
                 <img src="/star.png" alt="">
                 <img src="/star.png" alt="">
                 <img src="/star.png" alt="">
             </div>
-            <h4> <?php  echo $row['price']  ?></h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
+            <h4  > <?php  echo $row['price']  ?></h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
+            
+            
             </div>
     </div>
-
-<?php }   ?>
-
-
+    </a>
+    </form>
+    <?php }} ?>
 </div>
-
-
     </div>
 
 </div>
@@ -159,30 +171,21 @@ $qr = $connection->query($sel);
 
 
 
-           
+
 <div id="F_Pontalons" class="globel_scroll">
-    <h1 id="robes">F_Pontalons</h1>
+    <h1 id="robes"> Pontalons </h1>
     <span class="flesh-scrool"> </span>
     <div class="scroll">
         
 
 
 <div class="continer">
-
-
-
-
-    
-  
-
-    
-
-
-<?php if($row['category']=='F_Pontalons'){  ?>
-
-
-
-
+<?php 
+ while($row = $qr1->FETCH_ASSOC() ){  
+ if($row['category']=='F_Pontalons'){ 
+      ?> 
+ <form action='panier.php' method='POST'>
+ <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
     <div class="product">
         <img class="img-pro" src="<?php echo $row['image'] ?>" alt="">
         <div class="desc">
@@ -195,44 +198,43 @@ $qr = $connection->query($sel);
                 <img src="star.png" alt="">
             </div>
             <h4> <?php echo $row['price'] ?> </h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="shop_icons.png" alt=""></a>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
             </div>
     </div>
-
-<?php } ?>
-
-    
-</div>
-    
+    </a>
+    </form>
+    <?php }} ?>
 
 
 
-    </div>
 
 </div>
+
+</div>
+
+</div>
+
+
+
+
+
+
 
 
 
 <div id="F_Blazers" class="globel_scroll">
-    <h1 id="robes">F_Coats</h1>
+    <h1 id="robes"> Blazers</h1>
     <span class="flesh-scrool">  </span>
     <div class="scroll">
-        
+    <div class="continer">
 
-
-<div class="continer">
-
-
-
-<?php  if($row['category']=='F_Blazers'){ ?>
-
-    
+    <?php while($row = $qr2->FETCH_ASSOC() ){ 
+if($row['category']=='F_Blazers'){ ?>
+     <form action='panier.php' method='POST'>
+     <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
     <div class="product">
         <img class="img-pro" src=" <?php echo  $row['image'] ?>" alt="">
         <div class="desc">
@@ -245,27 +247,28 @@ $qr = $connection->query($sel);
                 <img src="star.png" alt="">
             </div>
             <h4> <?php echo  $row['price'] ?> </h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="shop_icons.png" alt=""></a>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
             </div>
     </div>
-
-
+    </a>
+    </form>
     <?php }} ?>
 
+
 </div>
         
     </div>
 
 </div>
+
+
+
 
 <div id="F_T-Shirt" class="globel_scroll">
-    <h1 id="robes">F_T-Shirt</h1>
+    <h1 id="robes"> T-Shirt </h1>
     <span class="flesh-scrool">  </span>
     <div class="scroll">
         
@@ -273,410 +276,167 @@ $qr = $connection->query($sel);
 
 <div class="continer">
 
+<?php 
+ while($row = $qr3->FETCH_ASSOC() ){ 
+ if($row['category']=='F_T-Shirt'){ ?>
+     <form action='panier.php' method='POST'>
+     <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
+    
+    <div   class="product">
+        <img class="img-pro" src=" <?php echo  $row['image'] ?>" alt="">
+        <div class="desc">
+            <span> <?php echo  $row['title'] ?></span>
+            <h5><?php echo  $row['category'] ?></h5>
+            <div class="start">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+            </div>
+            <h4> <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
+            </div>
+    </div>
+    </a>
+    </form>
+    <?php }} ?>
 
-
-    <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
     
 </div>
-    
-
-    </div>
-
-
 </div>
+</div>
+
+
+
+
+
 <div id="F_Hoodies" class="globel_scroll">
-    <h1 id="robes">F_Hoodies</h1>
+    <h1 id="robes"> Hoodies </h1>
     <span class="flesh-scrool">  </span>
     <div class="scroll">
         
-
-
 <div class="continer">
 
+<?php while($row = $qr4->FETCH_ASSOC() ){ 
 
+if($row['category']=='F_Hoodies'){ ?>
+     <form action='panier.php' method='POST'>
+     <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
+    <div class="product">
+        <img class="img-pro" src="  <?php echo  $row['image'] ?> " alt="">
+        <div class="desc">
+            <span><?php echo  $row['title'] ?></span>
+            <h5><?php echo  $row['category'] ?></h5>
+            <div class="start">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+            </div>
+            <h4> <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
+            </div>
+    </div>
+    </a>
+    </form>
+    <?php }} ?> 
 
-    <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
 
 </div>
-        
-    </div>
-
 </div>
+</div>
+
+
+
 
 <div id="H_T-Shirt" class="globel_scroll">
-    <h1 id="robes">H_T-Shirt</h1>
+    <h1 id="robes"> T-Shirt </h1>
     <span class="flesh-scrool"> </span>
     <div class="scroll">
-        
-
 
 <div class="continer">
 
+<?php
+while($row = $qr5->FETCH_ASSOC() ){ 
+     if($row['category']=='H_T-Shirt'){ ?>
+         <form action='panier.php' method='POST'>
+         <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
+    <div class="product">
+        <img class="img-pro" src="  <?php echo  $row['image'] ?> " alt="">
+        <div class="desc">
+            <span> <?php echo  $row['title'] ?> </span>
+            <h5> <?php echo  $row['category'] ?> </h5>
+            <div class="start">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+            </div>
+            <h4>  <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
+            </div>
+    </div>
+    </a>
+    </form>
+    <?php }} ?> 
 
 
-    <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
+
+</div>
+
+
     </div>
 
 
 </div>
-    
-    </div>
 
-</div>
+
+
+
 
 <div id="H_Coats" class="globel_scroll">
-    <h1 id="robes">H_Coats</h1>
+    <h1 id="robes"> Coats </h1>
     <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
 
 <div class="continer">
+<?php while($row = $qr6->FETCH_ASSOC() ){ 
+ if($row['category']=='H_Coats'){ ?>
+          <form action='panier.php' method='POST'>
+          <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
+    <div class="product">
+        <img class="img-pro" src=" <?php echo  $row['image'] ?>" alt="">
+        <div class="desc">
+            <span> <?php echo  $row['title'] ?> </span>
+            <h5> <?php echo  $row['category'] ?> </h5>
+            <div class="start">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+            </div>
+            <h4> <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
+            </div>
+    </div>
+    </a>
+    </form>
+    <?php }} ?> 
 
-    <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
 
 </div>
 
@@ -685,104 +445,44 @@ $qr = $connection->query($sel);
 
 
 </div>
+
+
+
 
 <div id="H_Pontalons" class="globel_scroll">
-    <h1 id="robes">H_Pontalons</h1>
+    <h1 id="robes"> Pontalons </h1>
     <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
 
 <div class="continer">
-
-
+<?php
+while($row = $qr7->FETCH_ASSOC() ){ 
+if($row['category']=='H_Pontalons'){ ?>
+          <form action='panier.php' method='POST'>
+          <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
     <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
+        <img class="img-pro" src=" <?php echo  $row['image'] ?>" alt="">
         <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
+            <span><?php echo  $row['title'] ?></span>
+            <h5> <?php echo  $row['category'] ?> </h5>
             <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
             </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
+            <h4>  <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
             </div>
     </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
+    </a>
+    </form>
+    <?php }} ?> 
 
 
 </div>
@@ -795,102 +495,39 @@ $qr = $connection->query($sel);
 
 
 <div id="H_centures" class="globel_scroll">
-    <h1 id="robes">H_centures</h1>
+    <h1 id="robes"> centures </h1>
     <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
 
 <div class="continer">
-
+<?php 
+while($row = $qr8->FETCH_ASSOC() ){ 
+  if($row['category']=='H_centures'){ ?>
+            <form action='panier.php' method='POST'>
+            <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
     <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
+        <img class="img-pro" src=" <?php echo  $row['image'] ?> " alt="">
         <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
+            <span><?php echo  $row['title'] ?></span>
+            <h5> <?php echo  $row['category'] ?> </h5>
             <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
             </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
+            <h4> <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
             </div>
     </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-
+    </a>
+    </form>
+    <?php }} ?> 
 </div>
         
 
@@ -898,9 +535,12 @@ $qr = $connection->query($sel);
 
 
 </div>
+
+
+
 
 <div id="H_Jeans" class="globel_scroll">
-    <h1 id="robes">H_Jeans</h1>
+    <h1 id="robes"> Jeans </h1>
     <span class="flesh-scrool">  </span>
     <div class="scroll">
         
@@ -908,95 +548,32 @@ $qr = $connection->query($sel);
 
 <div class="continer">
 
+<?php 
+while($row = $qr9->FETCH_ASSOC() ){ 
+if($row['category']=='H_Jeans'){ ?>
+            <form action='panier.php' method='POST'>
+            <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
     <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
+        <img class="img-pro" src="<?php echo  $row['image'] ?>" alt="">
         <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
+            <span> <?php echo  $row['title'] ?> </span>
+            <h5> <?php echo  $row['category'] ?> </h5>
             <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
             </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
+            <h4> <?php echo  $row['price'] ?>  </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
             </div>
     </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-
-
+    </a>
+    </form>
+    <?php }} ?>
 </div>
         
     </div>
@@ -1004,8 +581,13 @@ $qr = $connection->query($sel);
 
 </div>
 
+
+
+
+    
+
 <div id="E_T-Shirt" class="globel_scroll">
-    <h1 id="robes">E_T-Shirt</h1>
+    <h1 id="robes"> T-Shirt </h1>
     <span class="flesh-scrool"> </span>
     <div class="scroll">
         
@@ -1013,95 +595,34 @@ $qr = $connection->query($sel);
 
 <div class="continer">
 
-    <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
+<?php 
+while($row = $qr10->FETCH_ASSOC() ){ 
+  if($row['category']=='E_T-Shirt'){ ?>
+            <form action='panier.php' method='POST'>
+            <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
 
+    <div class="product">
+        <img class="img-pro" src="<?php echo  $row['image'] ?>" alt="">
+        <div class="desc">
+            <span> <?php echo  $row['title'] ?> </span>
+            <h5>  <?php echo  $row['category'] ?> </h5>
+            <div class="start">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+            </div>
+            <h4>  <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
+            </div>
+    </div>
+    </a>
+    </form>
 
+    <?php }} ?>
 
 </div>
         
@@ -1110,10 +631,13 @@ $qr = $connection->query($sel);
 
 
 </div>
+
+
+
 
 
 <div id="E_Coats" class="globel_scroll">
-    <h1 id="robes">E_Coats</h1>
+    <h1 id="robes"> Coats </h1>
     <span class="flesh-scrool"> </span>
     <div class="scroll">
         
@@ -1121,95 +645,34 @@ $qr = $connection->query($sel);
 
 <div class="continer">
 
+<?php 
+while($row = $qr11->FETCH_ASSOC() ){ 
+  if($row['category']=='E_Coats'){ ?>
+            <form action='panier.php' method='POST'>
+            <a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
+    <div class="product">
+        <img class="img-pro" src="<?php echo  $row['image'] ?>" alt="">
+        <div class="desc">
+            <span>  <?php echo  $row['title'] ?> </span>
+            <h5> <?php echo  $row['category'] ?>  </h5>
+            <div class="start">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+            </div>
+            <h4> <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
+            </div>
+    </div>
+    </a>
+    </form>
 
+    <?php }} ?>
 
-    <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
 
 </div>
         
@@ -1218,234 +681,127 @@ $qr = $connection->query($sel);
 
 
 </div>
+
+
+
+
 
 
 
 <div id="E_Pontalons" class="globel_scroll">
-    <h1 id="robes">E_Pontalons</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <h1 id="robes"> Pontalons </h1>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
         
 
 
 <div class="continer">
 
+<?php 
+while($row = $qr12->FETCH_ASSOC() ){ 
+  if($row['category']=='E_Pontalons'){ ?>
 
-
+<form action='panier.php' method='POST'>
+<a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
     <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
+        <img class="img-pro" src=" <?php echo  $row['image'] ?> " alt="">
         <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
+            <span> <?php echo  $row['title'] ?> </span>
+            <h5>  <?php echo  $row['category'] ?> </h5>
             <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
             </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
+            <h4> <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
             </div>
     </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
+    </a>
+    </form>
+    <?php }} ?>
 
 </div>
     
     </div>
 
 </div>
+
+
 
 <div id="E_Centures" class="globel_scroll">
-    <h1 id="robes">E_Centures</h1>
-    <span class="flesh-scrool"> <<<<<< go left or right  >>>>>> </span>
+    <h1 id="robes"> Centures </h1>
+    <span class="flesh-scrool">  </span>
     <div class="scroll">
 
 <div class="continer">
+<?php 
+while($row = $qr13->FETCH_ASSOC() ){ 
+  if($row['category']=='E_Centures'){ ?>
 
-    <div class="product">
-        <img class="img-pro" src="/img/products/f2.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
+<form action='panier.php' method='POST'>
+
     
-    <div class="product">
-        <img class="img-pro" src="/img/products/f3.jpg" alt="">
+<a href="s_prod.php?prodid=<?php  echo $row['id'] ;?>" >
+
+
+<div class="product">
+        <img class="img-pro" src="<?php echo  $row['image'] ?>" alt="">
         <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
+            <span> <?php echo  $row['title'] ?> </span>
+            <h5> <?php echo  $row['category'] ?> </h5>
             <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
+                <img src="star.png" alt="">
             </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
+            <h4> <?php echo  $row['price'] ?> </h4>
+            <input type="hidden" name="hidden_name" value="<?php echo $row["title"]; ?>" />  
+            <input type="hidden" name="hidden_price" value="<?php echo $row["price"]; ?>" /> 
+            <input type="hidden" name="hidden_id" value="<?php echo $row["id"]; ?>" />  
+            <input class="submit" type='submit' name='add_to_cart' value="add to cart" > 
             </div>
     </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f1.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
-    
-    <div class="product">
-        <img class="img-pro" src="/img/products/f4.jpg" alt="">
-        <div class="desc">
-            <span>nick</span>
-            <h5>T-shirt</h5>
-            <div class="start">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-                <img src="/star.png" alt="">
-            </div>
-            <h4>100 MAD</h4>
-            <a href="panier.html"> <img style="width: 20px;
-            height: 20px;
-            border-radius: 5px;
-            position: absolute;
-            bottom: 5%;
-            left: 85%;
-            " src="/shop_icons.png" alt=""></a>
-            </div>
-    </div>
+
+
+</a>
+
+ 
+    </form>
+    <?php }} ?>
+
+
 </div>
 
     </div>
 
 </div>
+
+
+
 
         </section>
 
     </div>
 
-<section class="nest_pageof_products">
-<a href="#page1">1</a>
-<a href="#page2">2</a>
-<a href="#page3">3</a>
-<a  href="#"><img style="width: 13px
-;
-height: 13px;
-" src="/next-page_icons.png" alt=""></a>
-
-
-</section>
+ <section class="nest_pageof_products">
+<a href="#">1</a>
+<a href="#">2</a>
+<a href="#">3</a>
+<a  href="#">
+<ion-icon name="send"></ion-icon>
+</a>
+ </section>
 
     <footer>
         <div class="footer-l">
             <div class="col">
-                <img style="height: 100px; width: 100px;" src="/shopping.png" alt="">
+                <img style="height: 70px; width: 90px;" src="ZAKA12.png" alt="">
                 <h4>contact</h4>
                 <p> <strong>adresse:</strong> guzalzozlo-rub istabmbul turkey</p>
                 <p> <strong>phone:</strong> 06******</p>
@@ -1458,15 +814,15 @@ height: 13px;
                 <h1>follow us</h1>
                 <ul>
                     <li>
-                        <a href="https://www.instagram.com/its_rahmoun/"><img style="width: 40px;height: 40px;padding-left: 6px;" src="/instagram.png" alt=""></a>
+                        <a href="https://www.instagram.com/its_rahmoun/">  <img style="width: 40px;height: 40px;padding-left: 6px;" src="instagram.png" alt="">   </a>
                     </li>
                     <li>
-                        <a href="https://www.tiktok.com/@rahmoun_osm"></a><img style="width: 40px;height: 40px;padding-left: 6px;" src="/tiktok.png" alt=""></li>
+                        <a href="https://www.tiktok.com/@rahmoun_osm"></a><img style="width: 40px;height: 40px;padding-left: 6px;" src="tiktok.png" alt=""></li>
 
                     <li>
-                        <a href="https://www.facebook.com/rahmoun.oussama.1"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="/facebook.png" alt=""></li>
+                        <a href="https://www.facebook.com/rahmoun.oussama.1"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="facebook.png" alt=""></li>
                     <li>
-                        <a href="https://github.com/"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="/github-logo-silhouette-in-a-square.png" alt=""></li>
+                        <a href="https://github.com/"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="github-logo-silhouette-in-a-square.png" alt=""></li>
                 </ul>
 
             </div>
@@ -1483,15 +839,15 @@ height: 13px;
             <div class="app">
                 <h1>install app</h1>
                 <div class="play-iso">
-                    <img style="width: 50px; height: 50px;" src="/google-play.png" alt="">
-                    <img style="width: 50px; height: 50px;" src="/app-store.png" alt="">
+                    <img style="width: 50px; height: 50px;" src="google-play.png" alt="">
+                    <img style="width: 50px; height: 50px;" src="app-store.png" alt="">
                 </div>
                 <div class="money">
 
                     <h1>secured paymen tgatways</h1>
                     <div class="money-c">
-                        <img style="width: 50px; height: 50px;" src="/paypal.png" alt="">
-                        <img style="width: 50px; height: 50px;" src="/mastercard.png" alt="" sizes="" srcset="">
+                        <img style="width: 50px; height: 50px;" src="paypal.png" alt="">
+                        <img style="width: 50px; height: 50px;" src="mastercard.png" alt="" sizes="" srcset="">
                     </div>
                 </div>
 
@@ -1501,7 +857,11 @@ height: 13px;
         </div>
 
     </footer>
+
+
 </body>
+
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
 </html>
 
@@ -1531,8 +891,8 @@ height: 13px;
             }
             
             .nav-r img {
-                height: 40px;
-                width: 40px;
+                height: 1.5cm;
+                width: 2.5cm;
             }
             
             .nav-r div {
@@ -1764,7 +1124,17 @@ height: 13px;
             .desc {
                 position: relative;
             }
-
+.submit{           
+     background-color: rgb(71, 143, 143);
+    margin-top: 5px;   
+    font-size: 10px;
+    border-radius: 4px;
+    transform: scale(1.2);
+}
+.submit:hover{
+    transform: scale(1.3);
+    transition: 0.4s;
+} 
 
             
 
@@ -1774,7 +1144,7 @@ height: 13px;
                 display: flex;
                 flex-direction: row;
                 margin-top: 20px;
-                background-color: #1a1a1a;
+                background-color: #703d21;;
                 border: 1px solid #1a1a1a;
                 box-shadow: 0px 1px 10px black;
                 color: #cce7d0;

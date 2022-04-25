@@ -11,21 +11,23 @@
 </head>
 
 <body>
-    <header>
+<header>
         <div class="nav-r"> <img src="ZAKA12.png" alt="">
-            <!-- <div>shopping</div> -->
+            <!-- <div>ZOZO</div> -->
         </div>
 
         <div>
             <ul class="nav-bar-left">
-                <li><a class="active" href="index.php">home</a></li>
-                <li><a href="shop.php">shop</a>
-                </li>
-                <li><a href="inscription.html">join us</a></li>
-                <li><a href="Sign-In.php">admin</a></li>
-                <li><a href="contact.html">contact us </a></li>
+                <li><ion-icon name="home"></ion-icon> <a class="active" href="index.php"> home  </a></li>
+                <li><ion-icon name="card"></ion-icon> <a href="shop.php">shop</a></li>
+                <li> <ion-icon name="contacts"></ion-icon> <a href="inscription.html">join us</a></li>
+                <li> <ion-icon name="person"></ion-icon> <a href="Sign-In.php">admin</a></li>
+                <li><ion-icon name="chatboxes"></ion-icon> <a href="contact.html">contact us </a></li>
                 <li>
-                    <a href="panier.html"><img src="/shopping-bag.png" alt=""> </a>
+                    <a href="panier.php">
+                        
+                        <ion-icon name="cart"></ion-icon>
+                 </a>
                 </li>
 
 
@@ -89,7 +91,7 @@
                     <h4>190 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -113,7 +115,7 @@
                     <h4>100 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -137,7 +139,7 @@
                     <h4>200 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -161,7 +163,7 @@
                     <h4>290 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -184,7 +186,7 @@
                     <h4>180 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -208,7 +210,7 @@
                     <h4>1900 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -232,7 +234,7 @@
                     <h4>160 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -256,7 +258,7 @@
                     <h4>890 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -280,7 +282,7 @@
                     <h4>770 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
@@ -357,7 +359,7 @@
     <footer>
         <div class="footer-l">
             <div class="col">
-                <img style="height: 100px; width: 100px;" src="/shopping.png" alt="">
+                <img style="height: 100px; width: 100px;" src="ZAKA12.png" alt="">
                 <h4>contact</h4>
                 <p> <strong>adresse:</strong> guzalzozlo-rub istabmbul turkey</p>
                 <p> <strong>phone:</strong> 06******</p>
@@ -370,15 +372,15 @@
                 <h1>follow us</h1>
                 <ul>
                     <li>
-                        <a href="https://www.instagram.com/its_rahmoun/"><img style="width: 40px;height: 40px;padding-left: 6px;" src="/instagram.png" alt=""></a>
+                        <a href="https://www.instagram.com/its_rahmoun/"><img style="width: 40px;height: 40px;padding-left: 6px;" src="instagram.png" alt=""></a>
                     </li>
                     <li>
-                        <a href="https://www.tiktok.com/@rahmoun_osm"></a><img style="width: 40px;height: 40px;padding-left: 6px;" src="/tiktok.png" alt=""></li>
+                        <a href="https://www.tiktok.com/@rahmoun_osm"></a><img style="width: 40px;height: 40px;padding-left: 6px;" src="tiktok.png" alt=""></li>
 
                     <li>
-                        <a href="https://www.facebook.com/rahmoun.oussama.1"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="/facebook.png" alt=""></li>
+                        <a href="https://www.facebook.com/rahmoun.oussama.1"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="facebook.png" alt=""></li>
                     <li>
-                        <a href="https://github.com/"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="/github-logo-silhouette-in-a-square.png" alt=""></li>
+                        <a href="https://github.com/"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="github-logo-silhouette-in-a-square.png" alt=""></li>
                 </ul>
 
             </div>
@@ -395,15 +397,15 @@
             <div class="app">
                 <h1>install app</h1>
                 <div class="play-iso">
-                    <img style="width: 50px; height: 50px;" src="/google-play.png" alt="">
-                    <img style="width: 50px; height: 50px;" src="/app-store.png" alt="">
+                    <img style="width: 50px; height: 50px;" src="google-play.png" alt="">
+                    <img style="width: 50px; height: 50px;" src="app-store.png" alt="">
                 </div>
                 <div class="money">
 
                     <h1>secured paymen tgatways</h1>
                     <div class="money-c">
-                        <img style="width: 50px; height: 50px;" src="/paypal.png" alt="">
-                        <img style="width: 50px; height: 50px;" src="/mastercard.png" alt="" sizes="" srcset="">
+                        <img style="width: 50px; height: 50px;" src="paypal.png" alt="">
+                        <img style="width: 50px; height: 50px;" src="mastercard.png" alt="" sizes="" srcset="">
                     </div>
                 </div>
 
@@ -414,6 +416,8 @@
 
     </footer>
 </body>
+
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 
 </html>
 

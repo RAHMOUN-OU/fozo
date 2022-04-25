@@ -60,7 +60,7 @@ $result = $sth->fetchAll(PDO::FETCH_ASSOC);
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
         crossorigin="anonymous">
         <link rel="stylesheet" href="Administrateur.css">
-    <title>Document</title>
+    <title>admin</title>
     <style>
         h1 , strong { 
     color : rgb(0, 110, 255);
@@ -69,26 +69,28 @@ $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 <header>
-        <div class="nav-r"> <img src="/1/R.png" alt="">
-            <div>ZOZO</div>
+        <div class="nav-r"> <img src="ZAKA12.png" alt="">
+            <!-- <div>ZOZO</div> -->
         </div>
 
         <div>
             <ul class="nav-bar-left">
-                <li><a class="active" href="index.html">home</a></li>
-                <li><a href="shop.php">shop</a>
-                </li>
-                <li><a href="inscription.html">join us</a></li>
-                <li><a href="Administrateur.php">admin</a></li>
-                <li><a href="contact.html">contact us </a></li>
+                <li><ion-icon name="home"></ion-icon> <a class="active" href="index.php"> home  </a></li>
+                <li><ion-icon name="card"></ion-icon> <a href="shop.php">shop</a></li>
+                <li> <ion-icon name="contacts"></ion-icon> <a href="inscription.html">join us</a></li>
+                <li> <ion-icon name="person"></ion-icon> <a href="Sign-In.php">admin</a></li>
+                <li><ion-icon name="chatboxes"></ion-icon> <a href="contact.html">contact us </a></li>
                 <li>
-                    <a href="panier.html"><img src="/shopping-bag.png" alt=""> </a>
+                    <a href="panier.php">
+                        
+                        <ion-icon name="cart"></ion-icon>
+                 </a>
                 </li>
 
 
             </ul>
         </div>
-</header>
+    </header>
 
 
 
@@ -205,6 +207,7 @@ $result = $sth->fetchAll(PDO::FETCH_ASSOC);
    
 </div>
 </body>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </html>
 
 
@@ -240,8 +243,8 @@ $result = $sth->fetchAll(PDO::FETCH_ASSOC);
     }
     
     .nav-r img {
-        height: 40px;
-        width: 40px;
+        height: 1.5cm;
+    width: 2.5cm;
     }
     
     .nav-r div {

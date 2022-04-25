@@ -22,8 +22,8 @@ if(isset($_POST['submit'])){
         $mail = $_POST["mail"];
         $age = $_POST["age"];
         $text = $_POST["text"];
-        $pass = mysqli_real_escape_string($conn, md5($_POST['passw']));
-        $pass1 =  mysqli_real_escape_string($conn, md5($_POST['passw1']));
+        $pass = mysqli_real_escape_string($conn, ($_POST['passw']));
+        $pass1 =  mysqli_real_escape_string($conn, ($_POST['passw1']));
 
         $select = mysqli_query($conn, "SELECT * FROM `fozo_form` WHERE mail = '$mail' AND pass1 = '$pass'") or die('query failed');
         

@@ -5,38 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>inscription</title>
-    <link rel="stylesheet" href="./inscription.css">
 </head>
 <body>
     <header>
-        <div class="nav-r"> <img src="1/R.png" alt="">
-            <div>ZOZO</div>
+        <div class="nav-r"> <img src="ZAKA12.png" alt="">
+            <!-- <div>ZOZO</div> -->
         </div>
-    
-        <div class="a1a"> 
+
+        <div>
             <ul class="nav-bar-left">
-                <li><a href="index.php">home</a></li>
-                <li><a href="shop.php">shop</a></li>
-                <li><a href="inscription.html">join us</a></li>
-                <li><a href="Sign-In.php">admin</a></li>
-                <li><a href="contact.html">contact us </a></li>
+                <li><ion-icon name="home"></ion-icon> <a class="active" href="index.php"> home  </a></li>
+                <li><ion-icon name="card"></ion-icon> <a href="shop.php">shop</a></li>
+                <li> <ion-icon name="contacts"></ion-icon> <a href="inscription.html">join us</a></li>
+                <li> <ion-icon name="person"></ion-icon> <a href="Sign-In.php">admin</a></li>
+                <li><ion-icon name="chatboxes"></ion-icon> <a href="contact.html">contact us </a></li>
                 <li>
-                    <a href="panier.html"><img src="shopping-bag.png" alt=""> </a>
+                    <a href="panier.php">
+                        
+                        <ion-icon name="cart"></ion-icon>
+                 </a>
                 </li>
+
+
             </ul>
         </div>
- <div class="a2">
-    <div class="toggle_btn" >
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
- </div>
     </header>
+
+
+
 <section class="first">
   <div class="first1">
-   <div class="text-first"> <h1 class="fisrt_1text">let's join fozo shopping </h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, quas vel obcaecati eaque veniam voluptate dolorum iusto consequuntur iste, aperiam dicta, dolore cum praesentium delectus repellat voluptas velit officia blanditiis!</p></div>
+   <div class="text-first"> <h1 class="fisrt_1text">    welcome!     </h1>
+    <p></p></div>
     <a href="#inscription"><img src="down _flesh.png" alt=""> </a>
   </div>
     <div class="img1_main">
@@ -66,8 +66,9 @@
 
         
         <button id="validation" class="validation" >validation</button>
+        <input      type="submit"  id="input9" name="submit" id="">
 
-        <div style="padding-bottom: 15px;"><a  href="register.php"> u  already  have a account? <strong>click_me</strong></a></div>
+        
 
 
 
@@ -79,6 +80,7 @@
 
 
 </body>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </html>
 
 
@@ -106,9 +108,9 @@ let a1a=document.querySelector('.a1a');
 
 let formulair=document.querySelector('.formulair');
 
-// subm.style.display = "none";
+ 
 
-let submit_valide;
+ let submit_valide="true";
 
 btn_validation.addEventListener("click",function(e){
     e.preventDefault();
@@ -118,10 +120,7 @@ btn_validation.addEventListener("click",function(e){
         document.getElementById("V1").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
         submit_valide="false";
     }
-    else{
-         submit_valide="true";
-    }
-   
+
 
     if( last_name.value.length<2 ){
         
@@ -129,9 +128,7 @@ btn_validation.addEventListener("click",function(e){
         document.getElementById("V2").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
         submit_valide="false";
     }
-    else{
-         submit_valide="true";
-    }
+
 
     //check mail
 
@@ -143,9 +140,7 @@ document.getElementById("V10").innerHTML="may this mail not a prof mail";
 document.getElementById("V10").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
 submit_valide="false";
 }
-else{
-     submit_valide="true";
-}
+
 
 
 if(age.value<18 || age.value>70){
@@ -154,19 +149,16 @@ document.getElementById("V3").style="font-size: 10px; padding-left:5px; color:re
 submit_valide="false";
 
 }
-else{
-     submit_valide="true";
-}
+
 
 
 if(passwr1.value!==passwr2.value || passwr1.value.length<8){
   document.getElementById("V4").innerHTML="The first password is different from the second";
   document.getElementById("V4").style="font-size: 10px; padding-left:5px; color:red;  font-weight: bold;";
   submit_valide="false";
+
 }
-else{
-     submit_valide="true";
-}
+
 
 
 
@@ -179,19 +171,12 @@ a1a.classList.add("show");
 }
 
 
-let subm=document.createElement('button');
 
-let atr= document.createAttribute('name');
 
-submit_valide="true";
-if(submit_valide==="true"){
-atr.value='submit';
-subm.setAttributeNode(atr);
 
-subm.innerHTML="<strong style='color:red;'> log_in </strong>";
-formulair.appendChild(subm);
+
     
-}
+
 
 
 
@@ -272,8 +257,8 @@ header {
 }
 
 .nav-r img {
-    height: 40px;
-    width: 40px;
+    height: 1.5cm;
+    width: 2.5cm;
 }
 
 .nav-r div {
@@ -772,3 +757,7 @@ margin-bottom: 10px;
   }
 
 </style>
+
+
+
+

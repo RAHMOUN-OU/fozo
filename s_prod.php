@@ -1,3 +1,26 @@
+
+<?php 
+include('Connexion_PDO.php');
+$idp = $_GET['prodid'];
+ $sql = "SELECT * FROM  `product` WHERE id='$idp'";
+
+ $qr=$cnx->query($sql);
+
+
+ 
+$result = $qr->fetchAll(PDO::FETCH_ASSOC);
+
+
+ if (count($result) == 1 ) {
+    foreach ($result as $row){ 
+         $img=$row['image'];
+         $price=$row['price'];
+         $title=$row['title'];
+        $idproduct=$row['id'];
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,23 +28,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>single_products_</title>
-    <link rel="stylesheet" href="/s_pro.css">
 </head>
 <body>
     <header>
-        <div class="nav-r"> <img src="/1/R.png" alt="">
-            <div>ZOZO</div>
+        <div class="nav-r"> <img src="ZAKA12.png" alt="">
+            <!-- <div>ZOZO</div> -->
         </div>
 
         <div>
             <ul class="nav-bar-left">
-                <li><a class="active" href="index.html">home</a></li>
-                <li><a href="shop.html">shopp</a></li>
-                <li><a href="blog.html">blog</a></li>
-                <li><a href="about.html">about</a></li>
-                <li><a href="contact.html">contact us </a></li>
+                <li><ion-icon name="home"></ion-icon> <a class="active" href="index.php"> home  </a></li>
+                <li><ion-icon name="card"></ion-icon> <a href="shop.php">shop</a></li>
+                <li> <ion-icon name="contacts"></ion-icon> <a href="inscription.html">join us</a></li>
+                <li> <ion-icon name="person"></ion-icon> <a href="Sign-In.php">admin</a></li>
+                <li><ion-icon name="chatboxes"></ion-icon> <a href="contact.html">contact us </a></li>
                 <li>
-                    <a href="panier.html"><img src="/shopping-bag.png" alt=""> </a>
+                    <a href="panier.php">
+                        
+                        <ion-icon name="cart"></ion-icon>
+                 </a>
                 </li>
 
 
@@ -31,30 +56,15 @@
 
     <section id="prod_d" class="section1">
     <div class="single_img">
-        <img src="/img/products/f1.jpg" width="100%" id="main_img" alt="">
-        <div class="gr_img">
-            
-                    <div class="group_img1">
-                    <img src="/img/products/f2.jpg" width="100%" class="small_img" alt="">
-                    </div>
-                    <div class="group_img1">
-                    <img src="/img/products/f3.jpg" width="100%" class="small_img" alt="">
-                    </div>
-                    <div class="group_img1">
-                    <img src="/img/products/f5.jpg" width="100%" class="small_img" alt="">
-                    </div>
-                    <div class="group_img1">
-                    <img src="/img/products/f4.jpg" width="100%" class="small_img" alt="">
-                    </div>
-            
-        </div>
+        <img src=" <?php echo $img ; ?>  " width="100%" id="main_img" alt="">
+       
         
     </div>
 
     <div class="single_pro_d">
-<h3>man s fashion T-shirt</h3>
-<h2> prix: 190$</h2>
-<form action="gophp">
+<h3> <?php echo $title ; ?> </h3>
+<h2> prix : <?php echo $price ;  ?> MAD </h2>
+
     <select  name="select_size_of_pro" id="select_size_of_pro">
         <option value="">select ur size</option>
         <option value="XS">XS</option>
@@ -65,101 +75,118 @@
         
         
         </select>
-        <input class="quantite" type="number" value="1">
+
+<form action="panier.php" method="post">
+
+
+<input type="hidden"  name="hidden_id"  value="<?php echo $idproduct ; ?>">
+<input type="hidden"  name="hidden_price"  value="<?php echo $price ; ?>">
+<input type="hidden"  name="hidden_name"  value="<?php echo $title ; ?>">
+
+        <input class="quantite"  name=' hidden_quantite' type="number" value="1">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veritatis rem, eaque dolores ullam nulla
             
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia molestiae animi fuga. Quo cum animi, voluptatem unde corrupti corporis? Id deserunt fugit tempore omnis quibusdam adipisci a minus est blanditiis!
             voluptates exercitationem reiciendis odit in esse eum accusantium delectus! Nesciunt facilis ipsam incidunt facere officia.</p>
-        <button>add to panier </button>
+        <input type="submit" value="add to cart" name='add_to_cart' >
+
+
 </form>
 
-    </div>
 
+
+    </div>
+<?php }}?>
     </section>
+
+ 
 
     <section class="some-prod">
         <h1>some of ours products</h1>
         <p>summer collection new designe</p>
         <div class="cont-prod">
             <div class="product ">
-                <img class="img-pro" src="/img/products/f5.jpg" alt="">
+                <img class="img-pro" src="img/products/f7.jpg" alt="">
                 <div class="desc">
                     <span>gucci</span>
                     <h5>T-shirt</h5>
                     <div class="start">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
 
 
                     </div>
                     <h4>180 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
                     left: 90%;
-                    " src="/shop_icons.png" alt=""></a>
+                    " src="shop_icons.png" alt=""></a>
                 </div>
             </div>
             <div class="product">
-                <img class="img-pro" src="/img/products/f6.jpg" alt="">
+                <img class="img-pro" src="img/products/f6.jpg" alt="">
                 <div class="desc">
                     <span>prada</span>
                     <h5>T-shirt</h5>
                     <div class="start">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
 
                     </div>
                     <h4>1900 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
                     left: 90%;
-                    " src="/shop_icons.png" alt=""></a>
+                    " src="shop_icons.png" alt=""></a>
                 </div>
             </div>
             <div class="product">
-                <img class="img-pro" src="/img/products/f7.jpg" alt="">
+                <img class="img-pro" src="img/products/f7.jpg" alt="">
                 <div class="desc">
                     <span>jacobs</span>
                     <h5>T-shirt</h5>
                     <div class="start">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
-                        <img src="/star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
+                        <img src="star.png" alt="">
 
                     </div>
                     <h4>160 MAD</h4>
                     <a href="panier.html"> <img style="width: 20px;
                     height: 20px;
-                    background-color:palevioletred;
+                    
                     border-radius: 5px;
                     position: absolute;
                     bottom: 5%;
                     left: 90%;
-                    " src="/shop_icons.png" alt=""></a>
+                    " src="shop_icons.png" alt=""></a>
                 </div>
             </div>
         </div>
 
     </section>
 
+
+
+
     <footer>
         <div class="footer-l">
             <div class="col">
-                <img style="height: 100px; width: 100px;" src="/shopping.png" alt="">
+                <img style="height: 70px; width: 90px;" src="ZAKA12.png" alt="">
                 <h4>contact</h4>
                 <p> <strong>adresse:</strong> guzalzozlo-rub istabmbul turkey</p>
                 <p> <strong>phone:</strong> 06******</p>
@@ -172,15 +199,15 @@
                 <h1>follow us</h1>
                 <ul>
                     <li>
-                        <a href="https://www.instagram.com/its_rahmoun/"><img style="width: 40px;height: 40px;padding-left: 6px;" src="/instagram.png" alt=""></a>
+                        <a href="https://www.instagram.com/its_rahmoun/">  <img style="width: 40px;height: 40px;padding-left: 6px;" src="instagram.png" alt="">   </a>
                     </li>
                     <li>
-                        <a href="https://www.tiktok.com/@rahmoun_osm"></a><img style="width: 40px;height: 40px;padding-left: 6px;" src="/tiktok.png" alt=""></li>
+                        <a href="https://www.tiktok.com/@rahmoun_osm"></a><img style="width: 40px;height: 40px;padding-left: 6px;" src="tiktok.png" alt=""></li>
 
                     <li>
-                        <a href="https://www.facebook.com/rahmoun.oussama.1"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="/facebook.png" alt=""></li>
+                        <a href="https://www.facebook.com/rahmoun.oussama.1"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="facebook.png" alt=""></li>
                     <li>
-                        <a href="https://github.com/"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="/github-logo-silhouette-in-a-square.png" alt=""></li>
+                        <a href="https://github.com/"></a><img style="width: 40px;height: 40px; padding-left: 5px;" src="github-logo-silhouette-in-a-square.png" alt=""></li>
                 </ul>
 
             </div>
@@ -197,15 +224,15 @@
             <div class="app">
                 <h1>install app</h1>
                 <div class="play-iso">
-                    <img style="width: 50px; height: 50px;" src="/google-play.png" alt="">
-                    <img style="width: 50px; height: 50px;" src="/app-store.png" alt="">
+                    <img style="width: 50px; height: 50px;" src="google-play.png" alt="">
+                    <img style="width: 50px; height: 50px;" src="app-store.png" alt="">
                 </div>
                 <div class="money">
 
                     <h1>secured paymen tgatways</h1>
                     <div class="money-c">
-                        <img style="width: 50px; height: 50px;" src="/paypal.png" alt="">
-                        <img style="width: 50px; height: 50px;" src="/mastercard.png" alt="" sizes="" srcset="">
+                        <img style="width: 50px; height: 50px;" src="paypal.png" alt="">
+                        <img style="width: 50px; height: 50px;" src="mastercard.png" alt="" sizes="" srcset="">
                     </div>
                 </div>
 
@@ -217,12 +244,29 @@
     </footer>
 
 
-
 </body>
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </html>
 
-<script src="/s_pro.js"></script>
 
+
+
+<script> let mainimg = document.getElementById("main_img");
+    let smallimg = document.getElementsByClassName("small_img");
+    
+    smallimg[0].onclick= function(){
+        mainimg.src=smallimg[0].src;
+    }
+    smallimg[1].onclick= function(){
+        mainimg.src=smallimg[1].src;
+    }
+    smallimg[2].onclick= function(){
+        mainimg.src=smallimg[2].src;
+    }
+    smallimg[3].onclick= function(){
+        mainimg.src=smallimg[3].src;
+    }
+     </script>
 
 
 
@@ -253,8 +297,8 @@ header {
 }
 
 .nav-r img {
-    height: 40px;
-    width: 40px;
+    height: 1.5cm;
+    width: 2.5cm;
 }
 
 .nav-r div {
